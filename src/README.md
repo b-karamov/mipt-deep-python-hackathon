@@ -17,6 +17,7 @@
 │   │   └── comment.py
 │   ├── repository               # репозитории и контейнер
 │   │   ├── README.md
+│   │   ├── tables.py
 │   │   ├── repository.py
 │   │   ├── user_repository.py
 │   │   ├── post_repository.py
