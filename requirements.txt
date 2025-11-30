@@ -2,3 +2,5 @@ black==25.11.0
 sqlalchemy==2.0.44
 sqlalchemy-orm==1.2.10
 aiosqlite==0.21.0
+fastapi==0.122.1
+uvicorn==0.38.0
