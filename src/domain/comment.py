@@ -3,14 +3,12 @@ from __future__ import annotations
 from datetime import datetime
 from typing import List
 
-from domain.descriptors import AutoIncrementId, NonEmptyString, NonNull
+from domain.descriptors import NonEmptyString, NonNull
 from domain.post import Post
 from domain.user import User
 
 
-class Comment(AutoIncrementId):
-    _next_id = 1
-
+class Comment:
     post = NonNull("пост не может быть пустым")
     author = NonNull("автор не может быть пустым")
     text = NonEmptyString("текст комментария не может быть пустым")
@@ -22,8 +20,9 @@ class Comment(AutoIncrementId):
         text: str,
         parent: Comment | None = None,
         created_at: datetime | None = None,
+        id: int | None = None
     ) -> None:
-        self.id = self._next()
+        self.id = id
         self.post = post
         self.author = author
         self.parent = parent

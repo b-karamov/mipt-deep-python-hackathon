@@ -1,12 +1,10 @@
 from datetime import datetime
 
-from domain.descriptors import AutoIncrementId, NonEmptyString, NonNull
+from domain.descriptors import NonEmptyString, NonNull
 from domain.user import User
 
 
-class Post(AutoIncrementId):
-    _next_id = 1
-
+class Post:
     title = NonEmptyString("заголовок поста не может быть пустым")
     content = NonEmptyString("пост не может быть пустым")
     author = NonNull("автор не может быть пустым")
@@ -17,8 +15,9 @@ class Post(AutoIncrementId):
         content: str,
         author: User,
         created_at: datetime | None = None,
+        id: int | None = None
     ) -> None:
-        self.id = self._next()
+        self.id = id
         self.title = title
         self.content = content
         self.author = author
