@@ -14,6 +14,7 @@ engine = create_async_engine(settings.DATABASE_URL, echo=settings.DEBUG)
 async_session_factory = async_sessionmaker(engine, expire_on_commit=False)
 
 async def get_db() -> AsyncGenerator[Repository, None]:
+    """Зависимость для получения репозитория."""
     async with async_session_factory() as session:
         repos = Repository(session_factory=async_session_factory)
         try:
