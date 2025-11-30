@@ -40,7 +40,6 @@ class CommentReplyCreate(CommentBase):
 
 class CommentResponse(CommentBase):
     id: int
-    post_id: int
     author: UserResponse
     parent_id: Optional[int] = None
     created_at: datetime
