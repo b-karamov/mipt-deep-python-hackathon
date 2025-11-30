@@ -13,6 +13,7 @@ async def lifespan(app: FastAPI):
     async with engine.begin() as conn:
         await conn.run_sync(metadata.create_all)
     yield
+    # Очистка при завершении
     await engine.dispose()
 
 app = FastAPI(
@@ -53,7 +54,7 @@ if __name__ == "__main__":
 
     uvicorn.run(
         app,
-        host="localhost",
+        host="0.0.0.0",
         port=8000,
         reload=False
     )

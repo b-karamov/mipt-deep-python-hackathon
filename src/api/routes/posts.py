@@ -42,7 +42,7 @@ async def create_post(
 async def get_all_posts(
     post_service: Annotated[PostService, Depends(get_post_service)]
 ):
-    """Получить список всех постов"""
+    """Получить список всех постов."""
     return await post_service.repositories.posts.find_all()
 
 @router.get(
@@ -54,7 +54,7 @@ async def get_post(
     post_id: int,
     post_service: Annotated[PostService, Depends(get_post_service)]
 ):
-    """Получить информацию о посте по ID"""
+    """Получить информацию о посте по его ID."""
     post = await post_service.repositories.posts.find_by_id(post_id)
     if not post:
         from fastapi import HTTPException
@@ -74,7 +74,7 @@ async def get_posts_by_author(
     post_service: Annotated[PostService, Depends(get_post_service)],
     user_service: Annotated[UserService, Depends(get_user_service)]
 ):
-    """Получить все посты конкретного пользователя"""
+    """Получить все посты конкретного пользователя."""
     user = await user_service.repositories.users.find_by_username(username)
     if not user:
         from fastapi import HTTPException
