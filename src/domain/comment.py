@@ -32,6 +32,14 @@ class Comment:
         if parent is not None:
             parent.add_reply(self)
 
+    @property
+    def post_id(self) -> int:
+        return self.post.id
+    
+    @property 
+    def parent_id(self) -> int | None:
+        return self.parent.id if self.parent else None
+
     @classmethod
     def for_post(cls, post: Post, text: str, author: User) -> Comment:
         if post is None:
